@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Modal template for order confirmation -->
+    <template id="order_confirmation_modal" name="Order Confirmation Modal">
+        <t t-call="website.layout">
+            <div class="modal fade" id="orderConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="orderConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderConfirmationModalLabel">Order Confirmation</h5>
+                        </div>
+                        <div class="modal-body">
+                            <t t-if="sale_order">
+                                <h1>Thank you for your order!</h1>
+                                <p>Your order has been successfully placed.</p>
+                                <p>Your order number is: <t t-esc="sale_order.name"/></p>
+                                <p>Total Amount: <t t-esc="sale_order.amount_total"/></p>
+                            </t>
+                            <t t-else="">
+                                <h1>Order Not Found</h1>
+                                <p>There was an issue processing your order. Please try again later.</p>
+                            </t>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Continue Shopping button -->
+                            <a href="/shop" class="btn btn-secondary">Continue Shopping</a>
+                            <!-- Go Home button -->
+                            <a href="/" class="btn btn-primary">Go Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
